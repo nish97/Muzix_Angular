@@ -1,0 +1,23 @@
+<mat-grid-list cols="5">
+  <div *ngFor="let Track of Tracks">
+    <mat-grid-tile>
+      <mat-card class="card" role="group" tabindex="0" [ngStyle]="getMyStyles(Track)">
+        <mat-card-content id="gap">
+          <mat-card-title align="center">{{Track.name}}</mat-card-title>
+          <mat-card-subtitle align="center">{{Track.artist.name}}</mat-card-subtitle>
+        </mat-card-content>
+        <mat-card-footer class="footer">
+          <mat-card-actions align="center">
+            <button mat-mini-fab (click)=addToWishlist(Track)>
+              <mat-icon aria-label="Favorite" aria-hidden="false">{{Wish(Track)}}</mat-icon>
+            </button>
+            <span>&nbsp;</span>
+            <a mat-mini-fab aria-label="Play" href='{{Track.url}}'>
+              <mat-icon aria-hidden="false">play_circle_outline</mat-icon>
+            </a>
+          </mat-card-actions>
+        </mat-card-footer>
+      </mat-card>
+    </mat-grid-tile>
+  </div>
+</mat-grid-list>
