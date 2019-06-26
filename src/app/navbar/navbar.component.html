@@ -1,0 +1,21 @@
+<mat-toolbar color="accent">
+  <mat-toolbar-row>
+    <mat-icon class="example-icon" aria-hidden="false" aria-label="Music">music_note</mat-icon>
+    <span class="spacer"></span>
+    <button mat-button id="but" [matMenuTriggerFor]="menu">Tracks</button>
+    <mat-menu #menu="matMenu">
+      <div *ngFor="let country of countries">
+      <button mat-menu-item (click)="getCountryTracks(country)">{{country}}</button>
+    </div>
+    </mat-menu>
+    <button mat-flat-button id ="but" (click)="openWishlist()" color="accent">Whishlist</button>
+    <mat-form-field class="form-field">
+      <input type="search"  placeholder="Artist,Song..." matInput  [(ngModel)]="value">
+      <button mat-mini-fab *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+        <mat-icon>close</mat-icon>
+      </button>
+      <span matSuffix><mat-icon>mode_edit</mat-icon>&nbsp;</span>
+    </mat-form-field>
+  </mat-toolbar-row>
+</mat-toolbar>
+<app-playlist></app-playlist>
